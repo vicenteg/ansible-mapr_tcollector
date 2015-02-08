@@ -1,0 +1,9 @@
+# Before you enable the mapr_metrics collector, create the metrics:
+# tsdb mkmetric mapr.disks.READBYTES mapr.disks.WRITEOPS mapr.disks.WRITEBYTES mapr.disks.READOPS mapr.cpus.CPUTOTAL mapr.cpus.CPUIDLE mapr.cpus.CPUIOWAIT mapr.network.PKTSOUT mapr.network.BYTESOUT mapr.network.PKTSIN mapr.network.BYTESIN mapr.memory.used mapr.mfs.available mapr.mfs.used mapr.rpc.count mapr.rpc.inbytes mapr.rpc.outbytes
+#
+enabled = True
+webserver = "{{mapr_webserver}}"
+port = {{mapr_webserver_port}}
+no_ssl = False
+username = "{{mapr_username}}"
+password = "{{mapr_password}}"

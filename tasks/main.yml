@@ -1,0 +1,26 @@
+---
+# tasks file for mapr-opentsdb
+
+- name: install git
+  yum: name=git state=present
+
+- name: install pip
+  yum: name=python-pip state=present
+
+- name: download forked tcollector
+  git: repo=https://github.com/vicenteg/tcollector.git dest=/opt/tcollector
+#  environment:
+#    http_proxy: http://172.16.1.58:3128
+#    https_proxy: http://172.16.1.58:3128
+  
+- name: link tcollector start stop script to /etc/init.d
+  file: state=link src=/opt/tcollector/startstop dest=/etc/init.d/tcollector
+
+- name: edit start stop script to point to tsd 
+  lineinfile: dest=/opt/tcollector/startstop regexp="^#\s+TSD_HOST" line="TSD_HOST={{tsdb_host}}" backup=true
+
+- name: tell startstop where tcollector is installed
+  lineinfile: dest=/opt/tcollector/startstop line="TCOLLECTOR_PATH=/opt/tcollector" insertafter="^#!" backup=true 
+
+- name: create collectors/etc/mapr_metrics from template
+  template: src=etc.mapr_metrics_conf.py.j2 dest=/opt/tcollector/collectors/etc/mapr_metrics_conf.py backup=true
