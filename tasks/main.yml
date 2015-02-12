@@ -8,7 +8,7 @@
   yum: name=python-pip state=present
 
 - name: install requests
-  yum: name=python-requests state=present
+  pip: name=requests state=present
 
 - name: download forked tcollector
   git: repo=https://github.com/vicenteg/tcollector.git dest=/opt/tcollector
