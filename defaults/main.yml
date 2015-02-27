@@ -3,3 +3,8 @@
 
 proxy_env: { }
 
+tsdb_host: '{{groups["hbasemaster"][0]}}'
+mapr_webserver: '{{groups["webserver"][0]}}'
+mapr_webserver_port: 8443
+mapr_username: mapr
+mapr_password: mapr

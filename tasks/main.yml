@@ -28,3 +28,6 @@
 
 - name: create collectors/etc/mapr_metrics from template
   template: src=etc.mapr_metrics_conf.py.j2 dest=/opt/tcollector/collectors/etc/mapr_metrics_conf.py backup=true
+
+- name: start tcollector
+  service: name=tcollector state=started
