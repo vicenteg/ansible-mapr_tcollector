@@ -1,2 +1,5 @@
 ---
 # defaults file for mapr-tcollector
+
+proxy_env: { }
+
