@@ -1,18 +1,6 @@
 ---
 # tasks file for mapr-opentsdb
 
-- name: install git
-  yum: name=git state=present
-  environment: proxy_env
-
-- name: install pip
-  yum: name=python-pip state=present
-  environment: proxy_env
-
-- name: install requests
-  pip: name=requests state=present
-  environment: proxy_env
-
 - name: download forked tcollector
   git: repo=https://github.com/vicenteg/tcollector.git dest=/opt/tcollector force=yes
   environment: proxy_env
