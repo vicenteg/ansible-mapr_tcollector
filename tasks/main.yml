@@ -17,7 +17,7 @@
 
 - name: edit start stop script to point to tsd 
   sudo_user: root
-  lineinfile: dest=/opt/tcollector/startstop regexp="^#\s+TSD_HOST" line="TSD_HOST={{tsdb_host}}" backup=true
+  lineinfile: dest=/opt/tcollector/startstop regexp="^#\s+TSD_HOST" line="TSD_HOST={{groups["opentsdb"][0]}}" backup=true
 
 - name: tell startstop where tcollector is installed
   sudo_user: root
