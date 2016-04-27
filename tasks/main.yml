@@ -8,7 +8,7 @@
 
 - name: download forked tcollector
   sudo_user: root
-  git: repo=https://github.com/vicenteg/tcollector.git dest=/opt/tcollector force=yes
+  git: repo=https://github.com/vicenteg/tcollector.git version=ISSUE-196 dest=/opt/tcollector force=yes
   environment: proxy_env
   
 - name: link tcollector start stop script to /etc/init.d
