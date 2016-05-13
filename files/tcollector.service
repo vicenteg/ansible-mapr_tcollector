@@ -1,0 +1,14 @@
+[Unit]
+Description=OpenTSDB tcollector Service
+After=network.target mapr-warden.service
+ 
+[Service]
+Type=forking
+PrivateTmp=yes
+ExecStart=/opt/tcollector/startstop start
+ExecStop=/opt/tcollector/startstop stop
+Restart=on-abort
+ 
+[Install]
+WantedBy=multi-user.target
+
