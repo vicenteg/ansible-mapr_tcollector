@@ -5,6 +5,7 @@ After=network.target mapr-warden.target
 Wants=opentsdb.service
 
 [Service]
+Type=forking
 ExecStart=/opt/tcollector/startstop start
 ExecStop=/opt/tcollector/startstop stop
 ExecReload=/bin/kill -HUP $MAINPID
