@@ -1,0 +1,16 @@
+[Unit]
+Description=tcollector for OpenTSDB
+Documentation=
+After=network.target mapr-warden.target
+Wants=opentsdb.service
+
+[Service]
+ExecStart=/opt/tcollector/startstop start
+ExecStop=/opt/tcollector/startstop stop
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=process
+Restart=on-failure
+RestartSec=42s
+
+[Install]
+WantedBy=multi-user.target
