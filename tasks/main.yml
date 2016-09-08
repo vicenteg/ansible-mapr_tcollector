@@ -5,13 +5,11 @@
   become: yes
   become_user: root
   yum: name=git state=present
-  environment: '{{proxy_env}}'
 
 - name: download forked tcollector
   become: yes
   become_user: root
   git: repo=https://github.com/vicenteg/tcollector.git version=ISSUE-196 dest=/opt/tcollector force=yes
-  environment: '{{proxy_env}}'
   
 - name: link tcollector start stop script to /etc/init.d
   become: yes
